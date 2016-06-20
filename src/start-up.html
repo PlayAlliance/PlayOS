@@ -1,0 +1,119 @@
+<link rel="import" href="../src/app-os.html">
+
+<dom-module id="start-up">
+
+  <template>
+
+    <style>
+      :host {
+        display: block;
+        --app-primary-color: #4285f4;
+        --app-secondary-color: black;
+      }
+
+    </style>
+	<div style$="{{showStartUp}}">
+		<div>这是logo</div>
+		<div>这是进度条</div>
+		<div>
+			这是加载进度详细信息{{progress}}
+		</div>
+	</div>
+  <app-os></app-os>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'start-up',
+
+      properties: {
+        showStartUp:{
+          type: String,
+          value: "display:block",
+          reflectToAttribute: true
+        },
+        progress: {
+          type: Number,
+          value:0,
+          reflectToAttribute: true,
+          observer: '_progressChanged'
+        },
+        loadingEl: {
+        	type: Object,
+        	value: {},
+        	reflectToAttribute: true
+        },
+        loadList: {
+        	type: Object,
+        	value: {
+        		startUpReady: {val:false,per:5}, //组件ready
+        		serviceWorker: {val:false,per:5}, // 加载serviceWorker
+        		pouchDB: {val:false,per:5}, // 加载pounchDB
+        		dbModel: {val:false,per:5}, 
+        		sysModel: {val:false,per:5}, 
+        		fileModel: {val:false,per:5}, 
+        		pluginModel: {val:false,per:5}, 
+        		desktopModel: {val:false,per:5},
+        		accountModel: {val:false,per:5}
+        	}
+        }
+
+      },
+      created: function(){
+      	// setup os options
+	    window.AppOS = {
+	      status: 'START_UP', // START_UP 启动中 | LOGOUT 待登录或注销状态 | RUN 运行中 | SLEEP 休眠中
+	      db:{}, // 数据存储
+	      sys:{}, // 系统操作
+	      file:{}, // 文件操作
+	      plugin:{}, // 插件扩展
+	      desktop:{}, //桌面配置
+	      account:{}, // 账号操作
+	      registModule: function(mod){
+	        if(mod && mod.name){
+	          window.AppOS[mod.name] = window.AppOS[mod.name] || mod;
+	        }
+	      }
+	    };
+      },
+      ready: function() {
+      	this.loadingEl = document.getElementById('start-up-loading');
+        console.log('ready.',this.loadingEl)
+        this.progress +=1;
+	    
+		// load pre-caching service worker
+		if ('serviceWorker' in navigator) {
+			this.progress += 12;
+			window.addEventListener('load', function() {
+			  navigator.serviceWorker.register('../service-worker.js');
+			});
+		}
+
+		// load pouchdb
+		if (!window.PouchDB){
+			this.progress += 3;
+			addScript('../bower_components/pouchdb/dist/pouchdb.min.js')
+		}
+
+		function addScript(src){
+			var e = document.createElement('script');
+			e.src = src;
+			document.head.appendChild(e);
+		}
+      },
+      /**
+       * 更新进度条
+       */
+      _progressChanged: function(progress) {
+        // load page import on demand.
+        console.log(this.progress)
+        if(this.progress > 10){
+	         this.showStartUp = "display:none";
+        }
+      }
+
+    });
+  </script>
+
+</dom-module>

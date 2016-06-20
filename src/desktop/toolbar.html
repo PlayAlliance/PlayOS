@@ -1,0 +1,158 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../common-style.html">
+<link rel="import" href="../iconfont-style.html">
+
+<dom-module id="desktop-toolbar">
+  <template>
+    <style include="common-style"></style>
+    <style include="iconfont-style"></style>
+    <style>
+      :host {
+        position: fixed;
+        width: 100%;
+        min-width: 800px;
+        top: 0;
+        left: 0;
+        z-index: 10;
+      }
+      .pure-menu{
+        background: rgba(243, 241, 241, 0.9);
+        box-shadow: 0px 1px 2px #999;
+      }
+      .pure-menu-list{
+        margin: 0 15px;
+      }
+      .pure-menu-link{
+        padding: 0 5px;
+        font-size: 14px;
+        line-height: 28px;
+        color: #333;
+      }
+      .pure-menu-allow-hover .pure-menu-link:hover{
+        color: #FFF;
+        background: #4285F4;
+      }
+      .pure-menu-has-children .pure-menu-item{
+        display: block;
+      }
+      .menu-has-children-2 > .pure-menu-children{
+        left: 100%;
+        top: 0;
+      }
+      
+    </style>
+
+    <div class="pure-menu pure-menu-horizontal clearfix">
+        <ul class="pure-menu-list f-left">
+            <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                <a href="#" id="app-os-brand" class="pure-menu-link no-pure-icon">
+                  <i class="iconfont icon-ubuntuos"></i> 李全锋
+                </a>
+                <ul class="pure-menu-children">
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">关于本机</a></li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">系统偏好设置</a></li>
+                    <li class="pure-menu-item pure-menu-has-children menu-has-children-2 pure-menu-allow-hover">
+                      <a href="#" class="pure-menu-link">最近使用的项目</a>
+                      <ul class="pure-menu-children">
+                        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Email</a></li>
+                        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Twitter</a></li>
+                      </ul>
+                    </li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">睡眠</a></li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">关机...</a></li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">重新启动...</a></li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">注销"李全锋"</a></li>
+                </ul>
+            </li>
+            <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                <a href="#" id="app-os-brand" class="pure-menu-link no-pure-icon">Finder</a>
+                <ul class="pure-menu-children">
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">关于Finder</a></li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">偏好设置</a></li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">清空废纸篓...</a></li>
+                </ul>
+            </li>
+            <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                <a href="#" id="app-os-brand" class="pure-menu-link no-pure-icon">编辑</a>
+                <ul class="pure-menu-children">
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">关于Finder</a></li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">偏好设置</a></li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">清空废纸篓...</a></li>
+                </ul>
+            </li>
+            <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                <a href="#" id="app-os-brand" class="pure-menu-link no-pure-icon">显示</a>
+                <ul class="pure-menu-children">
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">关于Finder</a></li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">偏好设置</a></li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">清空废纸篓...</a></li>
+                </ul>
+            </li>
+            <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                <a href="#" id="app-os-brand" class="pure-menu-link no-pure-icon">前往</a>
+                <ul class="pure-menu-children">
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">关于Finder</a></li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">偏好设置</a></li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">清空废纸篓...</a></li>
+                </ul>
+            </li>
+            <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                <a href="#" id="app-os-brand" class="pure-menu-link no-pure-icon">窗口</a>
+                <ul class="pure-menu-children">
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">关于Finder</a></li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">偏好设置</a></li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">清空废纸篓...</a></li>
+                </ul>
+            </li>
+            <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                <a href="#" id="app-os-brand" class="pure-menu-link no-pure-icon">帮助</a>
+                <ul class="pure-menu-children">
+                    <li class="pure-menu-item"><a href="//aliquanfeng.com/AppOS/" class="pure-menu-link">AppMac 首页</a></li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">AppMac 帮助</a></li>
+                    <li class="pure-menu-item"><a href="//github.com/0326/AppOS" class="pure-menu-link">View on GitHub</a></li>
+                </ul>
+            </li>
+
+        </ul>
+        <ul class="pure-menu-list f-right">
+            <li class="pure-menu-item pure-menu-selected">
+              <a href="#" class="pure-menu-link no-pure-icon" name="音量"><i class="iconfont icon-voice"></i></a>
+            </li>
+            <li class="pure-menu-item pure-menu-selected">
+              <a href="#" class="pure-menu-link no-pure-icon" name="活动监视器"><i class="iconfont icon-duankoujincheng"></i></a>
+            </li>
+            <li class="pure-menu-item pure-menu-selected">
+              <a href="#" class="pure-menu-link no-pure-icon" name="蓝牙"><i class="iconfont icon-lanya"></i></a>
+            </li>
+            <li class="pure-menu-item pure-menu-selected">
+              <a href="#" class="pure-menu-link no-pure-icon" name="网络"><i class="iconfont icon-wifi"></i></a>
+            </li>
+            <li class="pure-menu-item pure-menu-selected">
+              <a href="#" class="pure-menu-link no-pure-icon" name="电池电量">100%<i class="iconfont icon-bf-icon-battery1"></i></a>
+            </li>
+            <li class="pure-menu-item pure-menu-has-children pure-menu-allow-click">
+                <a href="#" class="pure-menu-link no-pure-icon" name="日期">周日下午8:00</a>
+                <ul class="pure-menu-children">
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">Email</a></li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">Twitter</a></li>
+                </ul>
+            </li>
+            <li class="pure-menu-item pure-menu-selected">
+              <a href="#" class="pure-menu-link no-pure-icon" name="侧边栏导航"><i class="iconfont icon-leimu"></i></a>
+            </li>
+        </ul>
+    </div>
+
+  </template>
+
+  <script>
+
+    Polymer({
+
+      is: 'desktop-toolbar'
+
+    });
+
+  </script>
+
+</dom-module>
